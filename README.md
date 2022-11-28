@@ -8,7 +8,9 @@ As the user running XO:
 
 Replace `<url>` with the URL you use to access XO, and `<user>` with the name of a user with appropriate access permissions.
 
-Copy the token returned into `authentication.py`. This will be used by all of the utilities
+Copy the `authentication-example.py` file to `authentication.py` and put the token returned from the previous command into it. This will be used by all of the utilities.
+
+If you receive `401 Client Error: Unauthorized` running the utilities, then the token may need to be regenerated. Repeat the process above.
 
 # Using the utilities
 Run `setup.sh` to install the requirements into a venv and activate it.

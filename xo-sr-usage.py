@@ -61,5 +61,5 @@ for sr in srs:
 
 		descriptionString = getDescriptionString(sr, pools)
 
-		print(f"{descriptionString:{maxLength}}: {usage:>10.2b} {size:>10.2b} {usage/size*100:9.2f}%")
+		print(f"{descriptionString:{maxLength}} {usage:>10.2b} {size:>10.2b} {usage/size*100:9.2f}%")
 

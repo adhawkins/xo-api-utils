@@ -1,14 +1,19 @@
 #!/usr/bin/env python3
 
+import argparse
 from quantiphy import Quantity
 import sys
 
 from xoAPI.xoAPI import xoAPI
 import authentication
 
-BASE_URL="https://xcp-xo-amd.gently.org.uk:9443"
+parser = argparse.ArgumentParser(description = 'Dump SR usage')
 
-api = xoAPI(BASE_URL, authentication.TOKEN)
+parser.add_argument('--xo-url', type=str, help='The URL of the XO server', required=True)
+
+args = parser.parse_args()
+
+api = xoAPI(args.xo_url, authentication.TOKEN)
 
 def getDescriptionString(sr, pools):
 	return f"{sr['name_label']} on {pools[sr['$poolId']]}"

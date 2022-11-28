@@ -1,39 +1,32 @@
 #!/usr/bin/env python3
 
-import authentication
-import requests
-
 from quantiphy import Quantity
+import sys
+
+from xoAPI.xoAPI import xoAPI
+import authentication
 
 BASE_URL="https://xcp-xo-amd.gently.org.uk:9443"
-API_BASE="/rest/v0/"
+
+api = xoAPI(BASE_URL, authentication.TOKEN)
 
 def getDescriptionString(sr, pools):
 	return f"{sr['name_label']} on {pools[sr['$poolId']]}"
 
-def makeRequest(request):
-	cookies = {
-		"authenticationToken": authentication.TOKEN
-	}
-
-	ret = requests.get(request, cookies = cookies)
-	ret.raise_for_status()
-	return ret.json()
-
 pools={}
 
-poolUUIDs = makeRequest(f"{BASE_URL}{API_BASE}pools")
+poolUUIDs = api.makeRequest("pools")
 
 for poolUUID in poolUUIDs:
-	poolParams = makeRequest(f"{BASE_URL}{poolUUID}")
+	poolParams = api.makeRequest(poolUUID)
 	pools[poolParams['uuid']] = poolParams['name_label']
 
 srs=[]
 
-srUUIDs = makeRequest(f"{BASE_URL}{API_BASE}srs")
+srUUIDs = api.makeRequest("srs")
 
 for srUUID in srUUIDs:
-	srParams = makeRequest(f"{BASE_URL}{srUUID}")
+	srParams = api.makeRequest(srUUID)
 	srs.append(srParams)
 
 maxLength = 0

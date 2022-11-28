@@ -18,3 +18,9 @@ Run `setup.sh` to install the requirements into a venv and activate it.
 ## xo-sr-usage.py
 
 Dumps the usage information of all SRs
+
+```
+usage: xo-sr-usage.py [-h] --xo-url XO_URL
+```
+
+The `--xo-url` parameter is required.

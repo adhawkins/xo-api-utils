@@ -24,10 +24,9 @@ info = {}
 vms = api.makeRequest("vms")
 
 for vm in vms:
-    vmUUID = vm.split('/')[-1]
-
     vmInfo = api.makeRequest(vm)
     vmName = vmInfo['name_label']
+    vmUUID = vmInfo['id']
 
     vmSnapshots = api.makeRequest(
         f"vm-snapshots?filter=%24snapshot_of:{vmUUID}")

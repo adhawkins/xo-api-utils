@@ -26,3 +26,13 @@ usage: xo-sr-usage.py [-h] --xo-url XO_URL
 ```
 
 The `--xo-url` parameter is required.
+
+## xo-vm-snapshot-list.py
+
+Provides a list of snapshots for each VM and the age of each
+
+```
+usage: xo-vm-snapshot-list.py [-h] --xo-url XO_URL
+```
+
+The `--xo-url` parameter is required.

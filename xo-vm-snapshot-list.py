@@ -12,12 +12,11 @@ from xoAPI.xoAPI import xoAPI
 
 parser = argparse.ArgumentParser(description='View VM snapshot info')
 
-parser.add_argument('--xo-url', type=str,
-                    help='The URL of the XO server', required=True)
+parser.add_argument('xo-url', help='The URL of the XO server')
 
 args = parser.parse_args()
 
-api = xoAPI(args.xo_url, authentication.TOKEN)
+api = xoAPI(getattr(args, 'xo-url'), authentication.TOKEN)
 now = datetime.now()
 
 info = {}

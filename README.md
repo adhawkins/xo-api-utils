@@ -22,17 +22,13 @@ Run `setup.sh` to install the requirements into a venv and activate it.
 Dumps the usage information of all SRs
 
 ```
-usage: xo-sr-usage.py [-h] --xo-url XO_URL
+usage: xo-sr-usage.py [-h] xo-url
 ```
-
-The `--xo-url` parameter is required.
 
 ## xo-vm-snapshot-list.py
 
 Provides a list of snapshots for each VM and the age of each
 
 ```
-usage: xo-vm-snapshot-list.py [-h] --xo-url XO_URL
+usage: xo-vm-snapshot-list.py [-h] xo-url
 ```
-
-The `--xo-url` parameter is required.

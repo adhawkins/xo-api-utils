@@ -9,11 +9,12 @@ import authentication
 
 parser = argparse.ArgumentParser(description = 'Dump SR usage')
 
-parser.add_argument('--xo-url', type=str, help='The URL of the XO server', required=True)
+parser.add_argument('xo-url', help='The URL of the XO server')
 
 args = parser.parse_args()
 
-api = xoAPI(args.xo_url, authentication.TOKEN)
+api = xoAPI(getattr(args, 'xo-url'), authentication.TOKEN)
+
 
 def getDescriptionString(sr, pools):
 	return f"{sr['name_label']} on {pools[sr['$poolId']]}"

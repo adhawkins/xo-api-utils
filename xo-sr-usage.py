@@ -22,19 +22,12 @@ api = xoAPI(getattr(args, 'xo-url'), authentication.TOKEN)
 
 pools = {}
 
-poolUUIDs = api.makeRequest("pools")
+poolData = api.makeRequest("pools?fields=uuid,name_label")
 
-for poolUUID in poolUUIDs:
-    poolParams = api.makeRequest(poolUUID)
-    pools[poolParams['uuid']] = poolParams['name_label']
+for pool in poolData:
+    pools[pool['uuid']] = pool['name_label']
 
-srs = []
-
-srUUIDs = api.makeRequest("srs")
-
-for srUUID in srUUIDs:
-    srParams = api.makeRequest(srUUID)
-    srs.append(srParams)
+srs = api.makeRequest("srs?fields=size,physical_usage,name_label,$poolId")
 
 maxLength = 0
 

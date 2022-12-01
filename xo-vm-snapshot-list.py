@@ -19,24 +19,21 @@ now = datetime.now()
 
 info = {}
 
-vms = api.makeRequest("vms")
+vms = api.makeRequest("vms?fields=name_label,id")
 
 for vm in vms:
-    vmInfo = api.makeRequest(vm)
-    vmName = vmInfo['name_label']
-    vmUUID = vmInfo['id']
+    vmName = vm['name_label']
+    vmUUID = vm['id']
 
     vmSnapshots = api.makeRequest(
-        f"vm-snapshots?filter=%24snapshot_of:{vmUUID}")
+        f"vm-snapshots?filter=%24snapshot_of:{vmUUID}&fields=name_label,snapshot_time")
 
     vmSnapshotInfo = []
 
     for vmSnapshot in vmSnapshots:
-        snapshotInfo = api.makeRequest(vmSnapshot)
-
         snapshotData = {
-            'name': snapshotInfo['name_label'],
-            'time': snapshotInfo['snapshot_time'],
+            'name': vmSnapshot['name_label'],
+            'time': vmSnapshot['snapshot_time'],
         }
 
         vmSnapshotInfo.append(snapshotData)

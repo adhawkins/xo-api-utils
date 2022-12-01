@@ -5,8 +5,6 @@ import sys
 from datetime import datetime
 from operator import itemgetter
 
-from quantiphy import Quantity
-
 import authentication
 from xoAPI.xoAPI import xoAPI
 

@@ -32,3 +32,12 @@ Provides a list of snapshots for each VM and the age of each
 ```
 usage: xo-vm-snapshot-list.py [-h] xo-url
 ```
+
+## xo-report.py
+
+Provides a report of VMs along with their number of CPUs, assigned RAM and disks.
+
+```
+usage: xo-report.py [-h] xo-url
+```
+
